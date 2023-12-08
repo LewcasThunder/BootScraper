@@ -8,7 +8,7 @@ namespace BootScraper.Console
         public string ServiceUrl { get; set; }
 
         [Option('p', "productid", Required = true, HelpText = "The product ID to be searched. Defaults to output.csv")]
-        public string ProductId{ get; set; }
+        public string ProductId { get; set; }
 
         [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location")]
         public string OutputLocation { get; set; } = "output.csv";
