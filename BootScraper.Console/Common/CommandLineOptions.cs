@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace BootScraper.Console
+namespace BootScraper.Console.Common
 {
     public class CommandLineOptions
     {
@@ -13,10 +13,13 @@ namespace BootScraper.Console
         [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location")]
         public string OutputLocation { get; set; } = "output.csv";
 
-        [Option('d', "requestdelay", Required = false, HelpText = "The delay in milliseconds between each API call. Defaults to 2000")]
+        [Option('r', "requestdelay", Required = false, HelpText = "The delay in milliseconds between each API call. Defaults to 2000")]
         public int RequestedDelay { get; set; } = 2000;
 
         [Option('q', "quiet", Required = false, HelpText = "Set to true to remove command line output. Defaults to false")]
         public bool Quiet { get; set; } = false;
+
+        [Option('d', "deduplicateoutput", Required = false, HelpText = "Sets the option to only output one row per store. Defaults to false")]
+        public bool DeduplicateOutput { get; set; } = false;
     }
 }

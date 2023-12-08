@@ -1,6 +1,7 @@
 ﻿using BootScraper.Console.Commands;
 using BootScraper.Console.Common;
 using BootScraper.Console.Queries.CallStockAPI;
+using BootScraper.Console.Queries.LoadStockLevelData;
 using BootScraper.Console.Queries.LoadStoreData;
 
 namespace BootScraper.Console.Orchestration
@@ -14,14 +15,13 @@ namespace BootScraper.Console.Orchestration
             foreach (var paddedChunk in ChunkAddresses(inputAddresses))
             {
                 var responseModel = CallStockApi.Post(options.ServiceUrl, options.ProductId, paddedChunk);
-
-                foreach (var stockLevel in responseModel.stockLevels)
-                {
-                    OutputCsv.AddStockStatus(options.OutputLocation, stockLevel.stockLevel,
-                        paddedChunk.First(store => store.StoreId == stockLevel.storeId), options.Quiet);
-                }
+                OutputCsv.Execute(responseModel, paddedChunk, options);
+                
                 Thread.Sleep(options.RequestedDelay);
             }
+
+            if (options.DeduplicateOutput)
+                OutputDeduplicatedCsv.Execute(LoadStockLevelData.Run(options), options);
         }
 
         private static IEnumerable<StoreAddressModel[]> ChunkAddresses(IEnumerable<StoreAddressModel> storeData)

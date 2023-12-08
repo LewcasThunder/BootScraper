@@ -1,11 +1,9 @@
-﻿using BootScraper.Console.Common;
-
-namespace BootScraper.Console.Commands
+﻿namespace BootScraper.Console.Common
 {
     public class OutputStockStatusModel
     {
         public StoreAddressModel StoreAddress { get; set; }
         public bool InStock { get; set; }
-        public DateTime DateLastChecked { get; set; }
+        public DateTime DateTimeLastChecked { get; set; }
     }
 }
