@@ -1,10 +1,10 @@
 # BootScraper
 
 ## Table of Contents
-- Command Line Arguments
-- Output Format
-- Planned Updated
-- License
+- [Command Line Arguments](#command-line-arguments)
+- [Output Format](#output-format)
+- [Planned Updates](#planned-updates)
+- [License](#license)
 
 ## Command Line Arguments
 
