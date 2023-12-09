@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BootScraper.Commands\BootScraper.Commands.csproj" />
+    <ProjectReference Include="..\BootScraper.Common\BootScraper.Common.csproj" />
+    <ProjectReference Include="..\BootScraper.Queries\BootScraper.Queries.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-﻿namespace BootScraper.Console.Common
+﻿namespace BootScraper.Common
 {
     public class StockResponseModel
     {

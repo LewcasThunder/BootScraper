@@ -12,6 +12,9 @@
 #### -serviceurl or -u 
 Currently this needs to be set to "https://www.boots.com/online/psc/itemStock"
 
+#### -inputstoredata or -i
+The filepath/name of the store data input. This is currently located in "BootScraper.Queries\LoadStoreData\StoreData.csv"
+
 #### -productid or -p
 Lisdexamfetamine:
 - 20mg: 42013311000001109
@@ -46,7 +49,7 @@ AddressLine1, AddressLine2, AddressLine3, Postcode, StoreId, InStock, DateTimeCh
 - Search by County or City
 - Search multiple chosen Counties or Cities
 - Error handling
-- Separate out business logic from command line project and publish libraries to nuget.org
+- Publish libraries to nuget.org
 
 ## License
 BootScraper is released under the [MIT license](https://github.com/LewcasThunder/BootScraper/blob/master/LICENSE)

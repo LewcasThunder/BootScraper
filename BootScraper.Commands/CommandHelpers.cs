@@ -1,7 +1,7 @@
-﻿using CsvHelper;
-using System.Globalization;
+﻿using System.Globalization;
+using CsvHelper;
 
-namespace BootScraper.Console.Commands
+namespace BootScraper.Commands
 {
     internal static class CommandHelpers
     {

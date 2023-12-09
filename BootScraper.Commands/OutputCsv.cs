@@ -1,12 +1,12 @@
-﻿using CsvHelper;
-using System.Globalization;
-using BootScraper.Console.Common;
+﻿using System.Globalization;
+using BootScraper.Common;
+using CsvHelper;
 
-namespace BootScraper.Console.Commands
+namespace BootScraper.Commands
 {
-    internal static class OutputCsv
+    public static class OutputCsv
     {
-        internal static void Execute(StockResponseModel responseModel, StoreAddressModel[] paddedChunk, CommandLineOptions options)
+        public static void Execute(StockResponseModel responseModel, StoreAddressModel[] paddedChunk, StockLevelRequest options)
         {
             foreach (var stockLevel in responseModel.stockLevels)
             {
@@ -15,7 +15,7 @@ namespace BootScraper.Console.Commands
             }
         }
 
-        private static void AddStockStatus(string outputLocation, string stockLevel, StoreAddressModel storeAddress, CommandLineOptions options)
+        private static void AddStockStatus(string outputLocation, string stockLevel, StoreAddressModel storeAddress, StockLevelRequest options)
         {
             if (!File.Exists(options.OutputLocation))
                 CommandHelpers.CreateCsvHeader<OutputStockStatusModel>(outputLocation);

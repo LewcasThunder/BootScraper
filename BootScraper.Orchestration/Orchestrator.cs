@@ -1,16 +1,16 @@
-﻿using BootScraper.Console.Commands;
-using BootScraper.Console.Common;
-using BootScraper.Console.Queries.CallStockAPI;
-using BootScraper.Console.Queries.LoadStockLevelData;
-using BootScraper.Console.Queries.LoadStoreData;
+﻿using BootScraper.Commands;
+using BootScraper.Common;
+using BootScraper.Queries.CallStockAPI;
+using BootScraper.Queries.LoadStockLevelData;
+using BootScraper.Queries.LoadStoreData;
 
-namespace BootScraper.Console.Orchestration
+namespace BootScraper.Orchestration
 {
-    internal static class Orchestrator
+    public static class Orchestrator
     {
-        internal static void Run(CommandLineOptions options)
+        public static void Run(StockLevelRequest options)
         {
-            var inputAddresses = InputFromCsv.Execute();
+            var inputAddresses = InputFromCsv.Execute(options);
 
             foreach (var paddedChunk in ChunkAddresses(inputAddresses))
             {

@@ -1,5 +1,5 @@
-﻿using BootScraper.Console.Common;
-using BootScraper.Console.Orchestration;
+﻿using BootScraper.Common;
+using BootScraper.Orchestration;
 using CommandLine;
  
-Parser.Default.ParseArguments<CommandLineOptions>(args).WithParsed(Orchestrator.Run);
+Parser.Default.ParseArguments<StockLevelRequest>(args).WithParsed(Orchestrator.Run);

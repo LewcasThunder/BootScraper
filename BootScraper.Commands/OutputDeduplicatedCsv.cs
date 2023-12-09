@@ -1,12 +1,12 @@
 ﻿using System.Globalization;
-using BootScraper.Console.Common;
+using BootScraper.Common;
 using CsvHelper;
 
-namespace BootScraper.Console.Commands
+namespace BootScraper.Commands
 {
-    internal static class OutputDeduplicatedCsv
+    public static class OutputDeduplicatedCsv
     {
-        internal static void Execute(IEnumerable<OutputStockStatusModel> stockLevels, CommandLineOptions options)
+        public static void Execute(IEnumerable<OutputStockStatusModel> stockLevels, StockLevelRequest options)
         {
             var deduplicatedFileName = options.OutputLocation.Replace(".csv", "-deduplicated.csv");
 

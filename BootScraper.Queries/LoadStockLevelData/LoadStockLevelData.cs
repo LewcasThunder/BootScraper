@@ -1,12 +1,12 @@
-﻿using BootScraper.Console.Common;
+﻿using System.Globalization;
+using BootScraper.Common;
 using CsvHelper;
-using System.Globalization;
 
-namespace BootScraper.Console.Queries.LoadStockLevelData
+namespace BootScraper.Queries.LoadStockLevelData
 {
-    internal static class LoadStockLevelData
+    public static class LoadStockLevelData
     {
-        internal static List<OutputStockStatusModel> Run(CommandLineOptions options)
+        public static List<OutputStockStatusModel> Run(StockLevelRequest options)
         {
             using var reader = new StreamReader(options.OutputLocation);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);

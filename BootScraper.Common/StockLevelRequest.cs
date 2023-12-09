@@ -1,14 +1,17 @@
 ﻿using CommandLine;
 
-namespace BootScraper.Console.Common
+namespace BootScraper.Common
 {
-    public class CommandLineOptions
+    public class StockLevelRequest
     {
         [Option('u', "serviceurl", Required = true, HelpText = "The stock checker API's url")]
         public string ServiceUrl { get; set; }
 
         [Option('p', "productid", Required = true, HelpText = "The product ID to be searched. Defaults to output.csv")]
         public string ProductId { get; set; }
+
+        [Option('i', "inputstoredata", Required = true, HelpText = "The filepath/name of the store data input. This is currently located in BootScraper.Queries\\LoadStoreData\\StoreData.csv")]
+        public string InputStoreData { get; set; }
 
         [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location")]
         public string OutputLocation { get; set; } = "output.csv";

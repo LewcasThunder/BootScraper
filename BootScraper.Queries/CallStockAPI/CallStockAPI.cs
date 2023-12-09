@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using BootScraper.Console.Common;
+﻿using BootScraper.Common;
+using Newtonsoft.Json;
 
-namespace BootScraper.Console.Queries.CallStockAPI
+namespace BootScraper.Queries.CallStockAPI
 {
-    internal static class CallStockApi
+    public static class CallStockApi
     {
-        internal static StockResponseModel Post(string serviceUrl, string productId, IEnumerable<StoreAddressModel> paddedChunk)
+        public static StockResponseModel Post(string serviceUrl, string productId, IEnumerable<StoreAddressModel> paddedChunk)
         {
             var requestData = new StockRequestModel
             {
