@@ -6,7 +6,7 @@ namespace BootScraper.Commands
 {
     public static class OutputDeduplicatedCsv
     {
-        public static void Execute(IEnumerable<OutputStockStatusModel> stockLevels, StockLevelRequest options)
+        public static void Execute(IEnumerable<OutputStockStatusModel> stockLevels, BootScraperRequest options)
         {
             var deduplicatedFileName = options.OutputLocation.Replace(".csv", "-deduplicated.csv");
 

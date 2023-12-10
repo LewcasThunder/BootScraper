@@ -8,7 +8,7 @@ namespace BootScraper.Orchestration
 {
     public static class Orchestrator
     {
-        public static void Run(StockLevelRequest options)
+        public static void Run(BootScraperRequest options)
         {
             var inputAddresses = InputFromCsv.Execute(options);
 

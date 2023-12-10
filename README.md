@@ -39,6 +39,9 @@ Set to true to remove command line output. Defaults to false
 #### -deduplicateoutput or -d
 Set to true to produce an additional deduplicated output file. Defaults to false
 
+#### -county or -c 
+Sets the county to search for
+
 ## Output Format
 It outputs in CSV format with the following structure:
 
@@ -46,7 +49,7 @@ AddressLine1, AddressLine2, AddressLine3, Postcode, StoreId, InStock, DateTimeCh
 
 ## Planned Updates
 
-- Search by County or City
+- Search by City
 - Search multiple chosen Counties or Cities
 - Error handling
 - Publish libraries to nuget.org

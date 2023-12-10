@@ -6,7 +6,7 @@ namespace BootScraper.Commands
 {
     public static class OutputCsv
     {
-        public static void Execute(StockResponseModel responseModel, StoreAddressModel[] paddedChunk, StockLevelRequest options)
+        public static void Execute(StockResponseModel responseModel, StoreAddressModel[] paddedChunk, BootScraperRequest options)
         {
             foreach (var stockLevel in responseModel.stockLevels)
             {
@@ -15,7 +15,7 @@ namespace BootScraper.Commands
             }
         }
 
-        private static void AddStockStatus(string outputLocation, string stockLevel, StoreAddressModel storeAddress, StockLevelRequest options)
+        private static void AddStockStatus(string outputLocation, string stockLevel, StoreAddressModel storeAddress, BootScraperRequest options)
         {
             if (!File.Exists(options.OutputLocation))
                 CommandHelpers.CreateCsvHeader<OutputStockStatusModel>(outputLocation);

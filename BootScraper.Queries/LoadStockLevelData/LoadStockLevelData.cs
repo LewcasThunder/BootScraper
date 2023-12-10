@@ -6,7 +6,7 @@ namespace BootScraper.Queries.LoadStockLevelData
 {
     public static class LoadStockLevelData
     {
-        public static List<OutputStockStatusModel> Run(StockLevelRequest options)
+        public static List<OutputStockStatusModel> Run(BootScraperRequest options)
         {
             using var reader = new StreamReader(options.OutputLocation);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
