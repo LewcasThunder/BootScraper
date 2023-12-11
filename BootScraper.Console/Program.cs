@@ -2,4 +2,4 @@
 using BootScraper.Orchestration;
 using CommandLine;
  
-Parser.Default.ParseArguments<BootScraperRequest>(args).WithParsed(Orchestrator.Run);
+Parser.Default.ParseArguments<BootScraperRequest>(args).WithParsed(request => Orchestrator.Run(request));

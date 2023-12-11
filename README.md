@@ -28,7 +28,7 @@ If you want the codes for other medication (or spot any mistakes in the producti
 
 ### Optional
 #### -output or -o
-To specify the filepath/name for the output file. It defaults to "output.csv"
+Filepath/name for output file location. Will not output file if no value is given
 
 #### -requestdelay or -r
 The delay in milliseconds between each API call. Defaults to 2000

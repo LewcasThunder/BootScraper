@@ -16,8 +16,8 @@ namespace BootScraper.Common
         [Option('c', "county", Required = false, HelpText = "Sets the county to search")]
         public string? County { get; set; } = null;
 
-        [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location")]
-        public string OutputLocation { get; set; } = "output.csv";
+        [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location. Will not output file if no value is given")]
+        public string? OutputLocation { get; set; }
 
         [Option('r', "requestdelay", Required = false, HelpText = "The delay in milliseconds between each API call. Defaults to 2000")]
         public int RequestedDelay { get; set; } = 2000;
@@ -27,6 +27,5 @@ namespace BootScraper.Common
 
         [Option('d', "deduplicateoutput", Required = false, HelpText = "Sets the option to only output one row per store. Defaults to false")]
         public bool DeduplicateOutput { get; set; } = false;
-
     }
 }

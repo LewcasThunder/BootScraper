@@ -17,9 +17,9 @@ namespace BootScraper.API.Controllers
 
         [HttpPost]
         [RequestTimeout(1800000)]
-        public void Post([FromBody]BootScraperRequest request)
+        public IEnumerable<Stocklevel> Post([FromBody]BootScraperRequest request)
         {
-            Orchestration.Orchestrator.Run(request);
+            return Orchestration.Orchestrator.Run(request);
         }
     }
 }

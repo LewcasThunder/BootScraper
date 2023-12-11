@@ -8,20 +8,28 @@ namespace BootScraper.Orchestration
 {
     public static class Orchestrator
     {
-        public static void Run(BootScraperRequest options)
+        public static IEnumerable<Stocklevel> Run(BootScraperRequest options)
         {
             var inputAddresses = InputFromCsv.Execute(options);
-
+            var outputStockData = new List<Stocklevel>();
             foreach (var paddedChunk in ChunkAddresses(inputAddresses))
             {
                 var responseModel = CallStockApi.Post(options.ServiceUrl, options.ProductId, paddedChunk);
-                OutputCsv.Execute(responseModel, paddedChunk, options);
+                foreach (var stockLevel in responseModel.stockLevels)
+                {
+                    outputStockData.Add(stockLevel);
+                }
+
+                if (options.OutputLocation != null)
+                    OutputCsv.Execute(responseModel, paddedChunk, options);
                 
                 Thread.Sleep(options.RequestedDelay);
             }
 
-            if (options.DeduplicateOutput)
+            if (options.DeduplicateOutput && options.OutputLocation != null)
                 OutputDeduplicatedCsv.Execute(LoadStockLevelData.Run(options), options);
+
+            return options.DeduplicateOutput ?  outputStockData.DistinctBy(stockData => stockData.storeId) : outputStockData;
         }
 
         private static IEnumerable<StoreAddressModel[]> ChunkAddresses(IEnumerable<StoreAddressModel> storeData)

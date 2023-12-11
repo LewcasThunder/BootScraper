@@ -1,4 +1,4 @@
-﻿namespace BootScraper.Queries.CallStockAPI
+﻿namespace BootScraper.Common
 {
     public class StockRequestModel
     {
