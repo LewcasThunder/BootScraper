@@ -1,55 +1,57 @@
 ﻿using BootScraper.Commands;
-using BootScraper.Common;
-using BootScraper.Queries.CallStockAPI;
-using BootScraper.Queries.LoadStockLevelData;
-using BootScraper.Queries.LoadStoreData;
+using BootScraper.Queries;
 
 namespace BootScraper.Orchestration
 {
     public static class Orchestrator
     {
-        public static IEnumerable<Stocklevel> Run(BootScraperRequest options)
+        public static BootScraperResponse Run(BootScraperRequest options)
         {
-            var inputAddresses = InputFromCsv.Execute(options);
-            var outputStockData = new List<Stocklevel>();
-            foreach (var paddedChunk in ChunkAddresses(inputAddresses))
-            {
-                var responseModel = CallStockApi.Post(options.ServiceUrl, options.ProductId, paddedChunk);
-                foreach (var stockLevel in responseModel.stockLevels)
-                {
-                    outputStockData.Add(stockLevel);
-                }
+            var queriesResponse = Queries.Queries.Execute(new QueriesRequest(options.InputStoreData,
+                options.RequestedDelay, options.ServiceUrl,
+                options.ProductId, options.County));
 
-                if (options.OutputLocation != null)
-                    OutputCsv.Execute(responseModel, paddedChunk, options);
-                
-                Thread.Sleep(options.RequestedDelay);
+            var commandOutputModel = new List<CommandOutputModel>();
+            foreach (var stockLevel in queriesResponse.StockLevels)
+            {
+                var address = queriesResponse.StoreAddresses.First(address => address.StoreId == stockLevel.storeId);
+                commandOutputModel.Add(new CommandOutputModel
+                {
+                    Line1 = address.Line1,
+                    Line2 = address.Line2,
+                    Line3 = address.Line3,
+                    Postcode = address.Postcode,
+                    StoreId = address.StoreId,
+                    StockLevel = stockLevel.stockLevel == "G",
+                    DateTimeLastSearched = DateTime.UtcNow
+                });
             }
 
-            if (options.DeduplicateOutput && options.OutputLocation != null)
-                OutputDeduplicatedCsv.Execute(LoadStockLevelData.Run(options), options);
+            if (options.OutputLocation != null)
+                Commands.Commands.Execute(new CommandsRequest(options.OutputLocation, options.Quiet,
+                    options.DeduplicateOutput, commandOutputModel));
 
-            return options.DeduplicateOutput ?  outputStockData.DistinctBy(stockData => stockData.storeId) : outputStockData;
-        }
-
-        private static IEnumerable<StoreAddressModel[]> ChunkAddresses(IEnumerable<StoreAddressModel> storeData)
-        {
-            var chunkedStoreData = storeData.Chunk(10).ToList();
-
-            var paddedChunks = new List<StoreAddressModel[]>();
-
-            foreach (var chunk in chunkedStoreData)
+            var bootScraperStockLevel = new List<StockLevelData>();
+            foreach (var stockLevel in queriesResponse.StockLevels)
             {
-                var chunkList = chunk.ToList();
-                while (chunkList.Count < 10)
+                var address = queriesResponse.StoreAddresses.First(address => address.StoreId == stockLevel.storeId);
+                bootScraperStockLevel.Add(new StockLevelData
                 {
-                    chunkList.Add(new StoreAddressModel { StoreId = -1 });
-                }
-
-                paddedChunks.Add(chunkList.ToArray());
+                    Line1 = address.Line1,
+                    Line2 = address.Line2,
+                    Line3 = address.Line3,
+                    Postcode = address.Postcode,
+                    StoreId = address.StoreId,
+                    StockLevel = stockLevel.stockLevel == "G",
+                    DateTimeLastSearched = DateTime.UtcNow
+                });
             }
 
-            return paddedChunks;
+            return new BootScraperResponse
+            {
+                StockLevelData = options.DeduplicateOutput ?
+                    bootScraperStockLevel.DistinctBy(stockData => stockData.StoreId).ToList() : bootScraperStockLevel
+            };
         }
     }
 }

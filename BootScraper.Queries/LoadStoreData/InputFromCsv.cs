@@ -1,29 +1,27 @@
 ﻿using System.Globalization;
-using BootScraper.Common;
 using CsvHelper;
 
 namespace BootScraper.Queries.LoadStoreData
 {
     public static class InputFromCsv
     {
-        public static IEnumerable<StoreAddressModel> Execute(BootScraperRequest options)
+        public static IEnumerable<StoreAddressModel> Execute(string inputStoreData, string county)
         {
-            if (options.County == null)
+            if (county == null)
             {
-                using var reader = new StreamReader(options.InputStoreData);
+                using var reader = new StreamReader(inputStoreData);
                 using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
                 return csv.GetRecords<StoreAddressModel>().ToList();
             }
             else
             {
-                using var reader = new StreamReader(options.InputStoreData);
+                using var reader = new StreamReader(inputStoreData);
                 using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
                 return csv.GetRecords<StoreAddressModel>().Where(store =>
                     {
-                        var county = options.County.ToLower();
-                        return store.Line1.ToLower() == county ||
-                               store.Line2.ToLower() == county ||
-                               store.Line3.ToLower() == county;
+                        return store.Line1.ToLower() == county.ToLower() ||
+                               store.Line2.ToLower() == county.ToLower() ||
+                               store.Line3.ToLower() == county.ToLower();
                     })
                     .ToList();
             }

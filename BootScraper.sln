@@ -5,15 +5,13 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootScraper.Console", "BootScraper.Console\BootScraper.Console.csproj", "{5D850711-39EF-4B3F-82F8-27EB388C56AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootScraper.API", "BootScraper.API\BootScraper.API.csproj", "{0C4B8EA9-EAEB-49F0-850F-39642E7AC34D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootScraper.API", "BootScraper.API\BootScraper.API.csproj", "{0C4B8EA9-EAEB-49F0-850F-39642E7AC34D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootScraper.Common", "BootScraper.Common\BootScraper.Common.csproj", "{6BD108CA-4892-4E3D-9B7B-474F9E1FE8BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootScraper.Commands", "BootScraper.Commands\BootScraper.Commands.csproj", "{613D2AE6-89B4-4905-8CEC-2BC964272B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootScraper.Commands", "BootScraper.Commands\BootScraper.Commands.csproj", "{613D2AE6-89B4-4905-8CEC-2BC964272B0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootScraper.Queries", "BootScraper.Queries\BootScraper.Queries.csproj", "{691FC1AB-B05B-4D12-AC54-58F1DB1A7D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootScraper.Queries", "BootScraper.Queries\BootScraper.Queries.csproj", "{691FC1AB-B05B-4D12-AC54-58F1DB1A7D85}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootScraper.Orchestration", "BootScraper.Orchestration\BootScraper.Orchestration.csproj", "{642B91DB-2148-405A-B136-14E746C7150F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootScraper.Orchestration", "BootScraper.Orchestration\BootScraper.Orchestration.csproj", "{642B91DB-2148-405A-B136-14E746C7150F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{0C4B8EA9-EAEB-49F0-850F-39642E7AC34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4B8EA9-EAEB-49F0-850F-39642E7AC34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4B8EA9-EAEB-49F0-850F-39642E7AC34D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BD108CA-4892-4E3D-9B7B-474F9E1FE8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BD108CA-4892-4E3D-9B7B-474F9E1FE8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BD108CA-4892-4E3D-9B7B-474F9E1FE8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BD108CA-4892-4E3D-9B7B-474F9E1FE8BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{613D2AE6-89B4-4905-8CEC-2BC964272B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{613D2AE6-89B4-4905-8CEC-2BC964272B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{613D2AE6-89B4-4905-8CEC-2BC964272B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU

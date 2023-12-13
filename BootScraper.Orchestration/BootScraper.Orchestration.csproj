@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BootScraper.Commands\BootScraper.Commands.csproj" />
-    <ProjectReference Include="..\BootScraper.Common\BootScraper.Common.csproj" />
     <ProjectReference Include="..\BootScraper.Queries\BootScraper.Queries.csproj" />
   </ItemGroup>
 

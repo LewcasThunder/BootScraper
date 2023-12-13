@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Http.Timeouts;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

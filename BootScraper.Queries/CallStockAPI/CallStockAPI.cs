@@ -1,16 +1,20 @@
-﻿using BootScraper.Common;
+﻿using BootScraper.Queries.LoadStoreData;
 using Newtonsoft.Json;
 
 namespace BootScraper.Queries.CallStockAPI
 {
-    public static class CallStockApi
+    internal static class CallStockApi
     {
-        public static StockResponseModel Post(string serviceUrl, string productId, IEnumerable<StoreAddressModel> paddedChunk)
+        internal static StockResponseModel Post(string serviceUrl, string productId, IEnumerable<StoreAddressModel> paddedChunk)
         {
             var requestData = new StockRequestModel
             {
                 productIdList = new[] { productId },
-                storeIdList = paddedChunk.Select(chunk => chunk.StoreId).ToArray()
+                storeIdList = paddedChunk.Select(chunk =>
+                {
+                    var chunkStoreId = chunk.StoreId;
+                    return chunkStoreId;
+                }).ToArray()
             };
 
             var client = new HttpClient();
@@ -20,7 +24,9 @@ namespace BootScraper.Queries.CallStockAPI
             request.Content = new StringContent(serializeObject, null, "application/json");
 
             var response = client.SendAsync(request).Result;
-            response.EnsureSuccessStatusCode(); var responseString = response.Content.ReadAsStringAsync().Result;
+            response.EnsureSuccessStatusCode(); 
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            
             var stockResponseModel = JsonConvert.DeserializeObject<StockResponseModel>(responseString);
 
             return new StockResponseModel{ stockLevels = stockResponseModel.stockLevels.Where(stock => stock.productId == productId).ToArray()};

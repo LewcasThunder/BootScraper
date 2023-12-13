@@ -9,12 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BootScraper.Common\BootScraper.Common.csproj" />
     <ProjectReference Include="..\BootScraper.Orchestration\BootScraper.Orchestration.csproj" />
   </ItemGroup>
 

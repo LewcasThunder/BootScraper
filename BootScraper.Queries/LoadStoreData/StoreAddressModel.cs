@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace BootScraper.Common
+namespace BootScraper.Queries.LoadStoreData
 {
     public class StoreAddressModel
     {
