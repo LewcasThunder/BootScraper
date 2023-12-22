@@ -1,7 +1,6 @@
-﻿using BootScraper.Queries.LoadStoreData;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace BootScraper.Queries.CallStockAPI
+namespace BootScraper.Queries
 {
     internal static class CallStockApi
     {

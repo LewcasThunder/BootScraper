@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using CsvHelper;
 
-namespace BootScraper.Queries.LoadStoreData
+namespace BootScraper.Queries
 {
     public static class InputFromCsv
     {

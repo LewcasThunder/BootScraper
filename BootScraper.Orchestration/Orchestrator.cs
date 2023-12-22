@@ -50,7 +50,7 @@ namespace BootScraper.Orchestration
             return new BootScraperResponse
             {
                 StockLevelData = options.DeduplicateOutput ?
-                    bootScraperStockLevel.DistinctBy(stockData => stockData.StoreId).ToList() : bootScraperStockLevel
+                    bootScraperStockLevel.DistinctBy(stockData => stockData.StoreId).Where(stock => stock.StockLevel == true).ToList() : bootScraperStockLevel
             };
         }
     }

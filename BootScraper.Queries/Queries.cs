@@ -1,7 +1,4 @@
-﻿using BootScraper.Queries.CallStockAPI;
-using BootScraper.Queries.LoadStoreData;
-
-namespace BootScraper.Queries
+﻿namespace BootScraper.Queries
 {
     public static class Queries
     {

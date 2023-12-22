@@ -1,6 +1,4 @@
-﻿using BootScraper.Queries.LoadStoreData;
-
-namespace BootScraper.Queries
+﻿namespace BootScraper.Queries
 {
     public class QueriesResponse
     {
