@@ -19,8 +19,8 @@ namespace BootScraper.Orchestration
         [Option('o', "output", Required = false, HelpText = "Filepath/name for output file location. Will not output file if no value is given")]
         public string? OutputLocation { get; set; }
 
-        [Option('r', "requestdelay", Required = false, HelpText = "The delay in milliseconds between each API call. Defaults to 2000")]
-        public int RequestedDelay { get; set; } = 2000;
+        [Option('r', "requestdelay", Required = false, HelpText = "The delay in milliseconds between each API call. Defaults to 10000", Default = 10000)]
+        public int RequestedDelay { get; set; }
 
         [Option('q', "quiet", Required = false, HelpText = "Set to true to remove command line output. Defaults to false")]
         public bool Quiet { get; set; } = false;
